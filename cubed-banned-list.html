@@ -9,7 +9,6 @@
 <dom-module id="cubed-banned-list">
     <template>
         <style>
-
             paper-card {
                 width: 100%;
             }
@@ -20,15 +19,21 @@
             <div class="card-content">
                 <vaadin-grid theme="row-dividers" items="[[response.content]]">
                     <vaadin-grid-selection-column auto-select frozen> </vaadin-grid-selection-column>
-                    <vaadin-grid-column width="9em">
+                    <vaadin-grid-column width="60px">
+                        <template class="header">
+                            <vaadin-grid-sorter path="id">#</vaadin-grid-sorter>
+                        </template>
+                        <template>[[item.id]]</template>
+                    </vaadin-grid-column>
+                    <vaadin-grid-column>
                         <template class="header">
                             <vaadin-grid-sorter path="target">Target</vaadin-grid-sorter>
                         </template>
                         <template>[[item.target]]</template>
                     </vaadin-grid-column>
-                    <vaadin-grid-column width="9em">
+                    <vaadin-grid-column>
                         <template class="header">
-                            <vaadin-grid-sorter path="source">source</vaadin-grid-sorter>
+                            <vaadin-grid-sorter path="source">Source</vaadin-grid-sorter>
                         </template>
                         <template>[[item.source]]</template>
                     </vaadin-grid-column>
@@ -38,13 +43,13 @@
                         </template>
                         <template>[[item.reason]]</template>
                     </vaadin-grid-column>
-                    <vaadin-grid-column width="9em">
+                    <vaadin-grid-column>
                         <template class="header">
                             <vaadin-grid-sorter path="created">Created</vaadin-grid-sorter>
                         </template>
                         <template>[[item.created]]</template>
                     </vaadin-grid-column>
-                    <vaadin-grid-column width="9em">
+                    <vaadin-grid-column>
                         <template class="header">
                             <vaadin-grid-sorter path="expire">Expire</vaadin-grid-sorter>
                         </template>
