@@ -1,0 +1,76 @@
+<link rel="import" href="../polymer/polymer-element.html"/>
+<link rel="import" href="../sw4p-styles/sw4p-styles.html"/>
+<link rel="import" href="../iron-ajax/iron-ajax.html"/>
+<link rel="import" href="../vaadin-grid/theme/material/vaadin-grid.html">
+<link rel="import" href="../vaadin-grid/theme/material/vaadin-grid-selection-column.html">
+<link rel="import" href="../vaadin-grid/theme/material/vaadin-grid-sorter.html">
+<link rel="import" href="../paper-card/paper-card.html">
+
+<dom-module id="cubed-banned-list">
+    <template>
+        <style>
+
+            paper-card {
+                width: 100%;
+            }
+        </style>
+
+        <iron-ajax auto="true" url="/api/banned" handle-as="json" last-response="{{response}}"></iron-ajax>
+        <paper-card heading="Banned IPs/Players">
+            <div class="card-content">
+                <vaadin-grid theme="row-dividers" items="[[response.content]]">
+                    <vaadin-grid-selection-column auto-select frozen> </vaadin-grid-selection-column>
+                    <vaadin-grid-column width="9em">
+                        <template class="header">
+                            <vaadin-grid-sorter path="target">Target</vaadin-grid-sorter>
+                        </template>
+                        <template>[[item.target]]</template>
+                    </vaadin-grid-column>
+                    <vaadin-grid-column width="9em">
+                        <template class="header">
+                            <vaadin-grid-sorter path="source">source</vaadin-grid-sorter>
+                        </template>
+                        <template>[[item.source]]</template>
+                    </vaadin-grid-column>
+                    <vaadin-grid-column width="15em" flex-grow="2">
+                        <template class="header">
+                            <vaadin-grid-sorter path="reason">Reason</vaadin-grid-sorter>
+                        </template>
+                        <template>[[item.reason]]</template>
+                    </vaadin-grid-column>
+                    <vaadin-grid-column width="9em">
+                        <template class="header">
+                            <vaadin-grid-sorter path="created">Created</vaadin-grid-sorter>
+                        </template>
+                        <template>[[item.created]]</template>
+                    </vaadin-grid-column>
+                    <vaadin-grid-column width="9em">
+                        <template class="header">
+                            <vaadin-grid-sorter path="expire">Expire</vaadin-grid-sorter>
+                        </template>
+                        <template>[[item.expire]]</template>
+                    </vaadin-grid-column>
+                </vaadin-grid>
+            </div>
+        </paper-card>
+    </template>
+
+    <script>
+
+        class CubedBannedList extends Polymer.Element {
+            static get is() {
+                return 'cubed-banned-list';
+            }
+            static get properties() {
+                return {
+                    response: Array
+                }
+            }
+            constructor() {
+                super();
+            }
+        }
+        customElements.define(CubedBannedList.is, CubedBannedList);
+    </script>
+
+</dom-module>

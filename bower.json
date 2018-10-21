@@ -1,0 +1,20 @@
+{
+  "name": "cubed-banned-list",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Sw4pSpace/cubed-banned-list",
+  "license": "GNU GPL v3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0",
+    "sw4p-styles": "https://github.com/sw4pspace/sw4p-styles.git",
+    "iron-ajax": "@polymer/iron-ajax#^2.1.3",
+    "vaadin-grid": "vaadin/vaadin-grid#^5.1.0",
+    "paper-card": "PolymerElements/paper-card#v2.1.0"
+  }
+}
